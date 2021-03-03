@@ -1,0 +1,137 @@
+<div class="flexBottom" style="height: calc(100vh - 170px);">
+
+
+    <div class="h60 bbb10 vCenter flexRight">
+
+        <div class="tBlack50 fs18 fw500">BLOG USERS</div>
+        <div class="w8 black10 h18 ml25" [style.backgroundColor]="management.color + 99"
+            style="transform: skew(-20deg);"></div>
+        <div class="w4 black10 h18 ml10" [style.backgroundColor]="management.color + 99"
+            style="transform: skew(-20deg);"></div>
+        <div class="w2 black10 h18 ml10" [style.backgroundColor]="management.color + 99"
+            style="transform: skew(-20deg);"></div>
+
+        <div class="flex1"></div>
+
+        <div class="br2" [style.backgroundColor]="management.color" (click)="showAddUser=true;">
+            <div class="blackHov10 tWhite100 t5s lp15 rp15 h30 vhCenter">
+                Add new user
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="h40 mt15 mb15 btb10 blb10 brb10 bbb10 br2 lp5 vCenter tBlack50 black5">
+        <input type="text" class="empInput" placeholder="search users here" (keyup)="searchUsers($event.target.value)">
+    </div>
+
+
+    <div *ngIf="allUsers.length != 0" class="flex1 empScroll2 rp5"
+        style="display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 100px; grid-gap: 5px;">
+
+        <div *ngFor="let user of allUsers; let i=index;" class="flexRight">
+
+            <div class="h100 w100 vhCenter" style="border-radius: 5px 0 0 5px;"
+                [style.backgroundColor]="management.color">
+
+                <div class="w75 h75 menuShadow" style="border-radius: 100%; border: 5px solid #ffffff;">
+                    <img class="w75 h75"
+                        [src]="user.url"
+                        alt="">
+                </div>
+
+            </div>
+
+            <div class="flex1 flexBottom btb10 brb10 bbb10 lp15 rp15 blackHov5" style="border-radius: 0 5px 5px 0;">
+
+                <div class="fs500 h30 vCenter fw500" [style.color]="management.color">{{ user.name }}</div>
+
+                <div>{{ user.details }}</div>
+
+                <div class="flex1"></div>
+
+                <div class="flexRight">
+                    <div class="tBlack50 fw500 fs8 bp7 flex1">JOINED ON {{ user.creationDate }}</div>
+                    <div class="fs8 fw500 underline pointer" [style.color]="management.color" (click)="deleteUser(user.id)">DELETE USER</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div *ngIf="allUsers.length == 0" class="flex1 vhCenter btb10 blb10 brb10 bbb10 black5">
+        No results to show!
+    </div>
+
+
+    <div class="h10"></div>
+
+
+</div>
+
+
+<div *ngIf="showAddUser" class="screener white90 vhCenter">
+
+    <div class="shakeActivator white100 br2">
+
+        <div style="width: 400px;" class="flexBottom lp15 rp15 tp15 bp15 br2 backShadow black5">
+
+            <div class="flexRight">
+
+                <div class="h30 white100 fw500 flexBottom flex1 br2" [style.backgroundColor]="management.color">
+                    <div class="flex1 lp15 rp15 vCenter black25 tWhite100 br2">Add new user</div>
+                </div>
+
+                <div class="br2 ml5" [style.backgroundColor]="management.color"
+                (click)="showAddUser=false;">
+                    <div class="blackHov10 tWhite100 t5s lp15 rp15 h30 vhCenter">Close</div>
+                </div>
+
+            </div>
+
+            <div class="h1 black15 mt15"></div>
+
+            <div class="fw500 mt15 flexRight vCenter" [style.color]="management.color">
+                <div class="fs9 flex1">ENTER USER DETAILS</div>
+            </div>
+
+            <div class="fs8 fw500 mt15">
+                USER NAME
+            </div>
+
+            <div class="h30 btb15 bbb15 blb15 brb15 mt5 white100">
+                <input type="text" [(ngModel)]="userName" class="empInput" placeholder="user name">
+            </div>
+
+            <div class="fs8 fw500 mt15">
+                USER DETAILS
+            </div>
+
+            <div class="h30 btb15 bbb15 blb15 brb15 mt5 white100">
+                <input type="text" [(ngModel)]="userDetails" class="empInput" placeholder="user details">
+            </div>
+
+            <div class="fs8 fw500 mt15">
+                USER PROFILE PICTURE URL
+            </div>
+
+            <div class="h30 btb15 bbb15 blb15 brb15 mt5 white100">
+                <input type="text" [(ngModel)]="userUrl" class="empInput" placeholder="user profile url">
+            </div>
+
+            <div class="h1 black15 mt15"></div>
+
+            <div class="br2 flex2 mt15" style="margin-top: 17px;" [style.backgroundColor]="management.color"
+                (click)="addUser();">
+                <div class="blackHov10 tWhite100 t5s lp15 rp15 h30 vhCenter">Add user</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

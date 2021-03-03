@@ -1,0 +1,62 @@
+<div class="flexBottom" style="height: calc(100vh - 170px);">
+
+
+    <div class="h60 bbb10 vCenter flexRight">
+
+        <div class="tBlack50 fs18 fw500">ADD NEW POST</div>
+        <div class="w8 black10 h18 ml25" [style.backgroundColor]="management.color + 99"
+            style="transform: skew(-20deg);"></div>
+        <div class="w4 black10 h18 ml10" [style.backgroundColor]="management.color + 99"
+            style="transform: skew(-20deg);"></div>
+        <div class="w2 black10 h18 ml10" [style.backgroundColor]="management.color + 99"
+            style="transform: skew(-20deg);"></div>
+
+        <div class="flex1"></div>
+
+        <div class="br2" [style.backgroundColor]="management.color" (click)="showAddPost=true;">
+            <div class="blackHov10 tWhite100 t5s lp15 rp15 h30 vhCenter">
+                Publish post
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="flex1 flexRight mt15">
+
+        <div class="flex1 flexBottom">
+
+            <div class="h30 fw500 mb5 bold flexBottom flex1 br2" [style.backgroundColor]="management.color">
+                <div class="flex1 lp15 rp15 vCenter tWhite100 br2">Create your post</div>
+            </div>
+
+            <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent" [config]="editorConfig"
+                style="outline: none;"></angular-editor>
+
+        </div>
+
+        <div class="ml15 flex1 flexBottom">
+
+            <div class="h30 fw500 mb5 bold flexBottom flex1 br2" [style.backgroundColor]="management.color">
+                <div class="flex1 lp15 rp15 vCenter tWhite100 br2">Post preview</div>
+            </div>
+
+            <div class="empScroll2 flexBottom rp5" style="height: calc(100vh - 290px);">
+
+                <div class="flex1 blb10 btb10 brb10 bbb10 black5 lp15 tp15 bp15 rp15" style="font-weight: normal;">
+                    <div [innerHtml]="htmlContent ? (htmlContent | noSanitize) : ''"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<div *ngIf="showAddPost" class="screener vhCenter white90">
+    <app-add-new-post [close]="closeAddPost.bind(this)" [html]="htmlContent"></app-add-new-post>
+</div>

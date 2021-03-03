@@ -1,0 +1,79 @@
+<div class="shakeActivator white100 br2">
+
+    <div style="width: 600px;" class="flexBottom lp15 rp15 tp15 bp15 br2 backShadow black5">
+
+        <div class="flexRight">
+
+            <div class="h30 white100 fw500 flexBottom flex1 br2" [style.backgroundColor]="management.color">
+                <div class="flex1 lp15 rp15 vCenter black25 tWhite100 br2">Publish new post</div>
+            </div>
+
+            <div class="br2 ml5" [style.backgroundColor]="management.color"
+            (click)="close()">
+                <div class="blackHov10 tWhite100 t5s lp15 rp15 h30 vhCenter">Close</div>
+            </div>
+
+        </div>
+
+        <div class="h1 black15 mt15"></div>
+
+        <div class="fw500 mt15 flexRight vCenter" [style.color]="management.color">
+            <div class="fs9 flex1">ENTER POST DETAILS</div>
+        </div>
+
+        <div class="fs8 fw500 mt15">
+            POST ON BEHALF USER
+        </div>
+
+        <div class="h30 btb15 bbb15 blb15 brb15 mt5 white100">
+            <input type="text" [(ngModel)]="selectedName" class="empInput" placeholder="search users here" (keyup)="searchUsers();">
+        </div>
+
+        <div class="z200" style="height: 0px;">
+            <div class="white100 blb10 brb10 t5s menuShadow" style="max-height: 92px;">
+                <div class="bbb10 h30 vCenter lp10 blackHov10 " *ngFor="let user of allUsers; let i=index;"
+                    (click)="selectedName = user.name; selectedID = user.id; allUsers.length=0;">
+                    {{ user.name}}
+                </div>
+            </div>
+        </div>
+
+        <div class="fs8 fw500 mt15">
+            POST TITLE
+        </div>
+
+        <div class="h30 btb15 bbb15 blb15 brb15 mt5 white100">
+            <input type="text" [(ngModel)]="postName" class="empInput" placeholder="post title">
+        </div>
+
+        <div class="fs8 fw500 mt15">
+            POST DESCRIPTION
+        </div>
+
+        <div class="br2 btb15 bbb15 blb15 brb15 flex1 flexBottom mt5 white100">
+
+            <textarea stringInput [(ngModel)]='postDescription' class='font h100 lp7 tp7 bp7 rp7'
+                placeholder="enter post description here..."
+                style="border: none; outline:none; width:100%; resize: none; background-color: transparent;">
+            </textarea>
+
+        </div>
+
+        <div class="fs8 fw500 mt15">
+            POST TITLE IMAGE URL
+        </div>
+
+        <div class="h30 btb15 bbb15 blb15 brb15 mt5 white100">
+            <input type="text" [(ngModel)]="postUrl" class="empInput" placeholder="post title image url">
+        </div>
+
+        <div class="h1 black15 mt15"></div>
+
+        <div class="br2 flex2 mt15" style="margin-top: 17px;" [style.backgroundColor]="management.color"
+            (click)="addPost();">
+            <div class="blackHov10 tWhite100 t5s lp15 rp15 h30 vhCenter">Publish post</div>
+        </div>
+
+    </div>
+
+</div>
